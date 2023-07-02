@@ -1,0 +1,35 @@
+<div class="table">
+  <h1>All The Customers</h1>
+
+  <table class="styled-table container" style="margin-right: 100px">
+    <!-- <button (click)="getCustomers()">getCustomers</button> -->
+    <thead>
+      <tr>
+        <th>Serial Number</th>
+        <th>Customer Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>UserName</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let customer of customers; let i = index">
+      <tr *ngIf="customer.id != 19">
+        <td>{{ i + 1 }}</td>
+        <td>{{ customer.id }}</td>
+        <td>{{ customer.firstName }}</td>
+        <td>{{ customer.lastName }}</td>
+        <td>{{ customer.email }}</td>
+        <td>{{ customer.phone }}</td>
+        <td>{{ customer.username }}</td>
+        <td>
+          <button class="btn-danger" (click)="onDeleteUser(customer.id)">
+            delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

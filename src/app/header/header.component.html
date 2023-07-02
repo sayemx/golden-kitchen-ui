@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="css/style1.css" /> -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+
+    <!-- font awesome cdn link  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <a routerLink="home" class="logo"
+        ><i class="fas fa-utensils"></i>Golden Kitchen</a
+      >
+
+      <nav class="navbar">
+        <a routerLink="home" routerLinkActive="active">home</a>
+        <a routerLink="dishes" routerLinkActive="active" *ngIf="isAuthenticated"
+          >Dishes</a
+        >
+        <a routerLink="about" routerLinkActive="active">About</a>
+        <a routerLink="menu" routerLinkActive="active" *ngIf="!isSupplierLogin"
+          >Menu</a
+        >
+        <!-- <a href="#review">Review</a> -->
+        <!-- <a (click)="gotoOrder()" routerLinkActive="active" *ngIf="!isAdminLogin"
+          >Order</a
+        > -->
+        <a
+          routerLink="orderdetails"
+          routerLinkActive="active"
+          *ngIf="!isAdminLogin"
+          >Order Details</a
+        >
+        <a
+          routerLink="orderdetails"
+          routerLinkActive="active"
+          *ngIf="isAdminLogin"
+          >Orders</a
+        >
+        <a
+          routerLink="customerdetails"
+          routerLinkActive="active"
+          *ngIf="isAdminLogin"
+          >Customers</a
+        >
+        <a routerLink="suppliers" routerLinkActive="active" *ngIf="isAdminLogin"
+          >Deliverer</a
+        >
+      </nav>
+
+      <div class="thirteen">
+        <h1>{{ user ? user.firstName : "" }}</h1>
+      </div>
+      <div class="thirteen" *ngIf="isLoggedIn">
+        <h1>
+          {{ role() }}
+        </h1>
+      </div>
+
+      <div class="icons">
+        <!-- <i class="fas fa-bars" id="menu-bars"></i> -->
+        <!-- <i class="fas fa-search" id="search-icon"></i> -->
+        <!-- <a href="#" class="fas fa-heart"></a> -->
+        <a
+          routerLink="cart"
+          routerLinkActive="active"
+          class="fas fa-shopping-cart"
+          *ngIf="isLoggedIn && !isAdminLogin && !isSupplierLogin"
+        ></a>
+        <a
+          routerLink="login"
+          routerLinkActive="active"
+          class="fas fa-user"
+          *ngIf="!isLoggedIn"
+        ></a>
+
+        <button class="logout" *ngIf="isLoggedIn" (click)="onLogout()">
+          Sign out
+        </button>
+      </div>
+    </header>
+  </body>
+</html>

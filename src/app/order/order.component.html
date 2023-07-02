@@ -1,0 +1,73 @@
+<!-- order section starts  -->
+
+<section class="order" id="order">
+  <h3 class="sub-heading">order now</h3>
+  <h1 class="heading">free and fast</h1>
+
+  <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+    <div class="inputBox">
+      <div class="input">
+        <span>Toatal Amout</span>
+        <input type="number" [(ngModel)]="price" name="price" required />
+      </div>
+      <div class="input">
+        <span>Total Item</span>
+        <input type="number" [(ngModel)]="totalItem" name="total" required />
+      </div>
+    </div>
+
+    <div class="inputBox">
+      <div class="input">
+        <span>your address</span>
+        <textarea
+          name=""
+          placeholder="enter your address"
+          id=""
+          cols="30"
+          rows="10"
+          required
+        ></textarea>
+      </div>
+      <div class="input">
+        <span>your message</span>
+        <textarea
+          name=""
+          placeholder="enter your message"
+          id=""
+          cols="30"
+          rows="10"
+          required
+        ></textarea>
+      </div>
+    </div>
+    <div class="inputBox">
+      <div class="input">
+        <span>Select Payment Mode</span>
+        <select required>
+          <option>Credit Card</option>
+          <option>Debit Card</option>
+          <option>Phone pay</option>
+          <option>Google pay</option>
+          <option>Paytm pay</option>
+          <option>Cash On Delivery</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="input">
+        <span>Enter payment amount</span>
+        <input type="number" [(ngModel)]="payment" name="payment" required />
+      </div>
+    </div>
+    <br /><br />
+
+    <input
+      type="submit"
+      value="Place Order"
+      class="btn"
+      [disabled]="!authForm.valid"
+    />
+  </form>
+</section>
+
+<!-- order section ends -->

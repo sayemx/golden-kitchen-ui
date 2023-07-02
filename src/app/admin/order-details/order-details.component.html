@@ -1,0 +1,55 @@
+<div class="table">
+  <h1>
+    <!-- {{ currentUsername === "admin1234" ? "All ORDERS" : "Your Orders" }} -->
+    {{ getHeading() }}
+    <!-- <button (click)="getOrders()" class="btn btn-primary">get orders</button> -->
+  </h1>
+  <table class="styled-table container" style="margin-right: 100px">
+    <!-- <button (click)="getCustomers()">getCustomers</button> -->
+    <thead>
+      <tr>
+        <th>Serial Number</th>
+        <th>Order Id</th>
+        <th>UserName</th>
+        <th>Bill</th>
+        <th>Order Placed At Date</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let order of orders; let i = index">
+      <tr
+        *ngIf="
+          order.userName === currentUsername ||
+          currentUsername === 'admin1234' ||
+          isSupplierLogin
+        "
+        [ngStyle]="{ 'background-color': isDelivered(order.status) }"
+      >
+        <td>{{ i + 1 }}</td>
+        <td>{{ order.orderId }}</td>
+        <td>{{ order.userName }}</td>
+        <td>{{ order.bill }}</td>
+        <td>{{ order.date }}</td>
+        <td>{{ order.status ? "Delivered" : "Pending" }}</td>
+        <td>
+          <button
+            class="btn-danger"
+            (click)="onDeleteOrder(order.orderId)"
+            *ngIf="(!isSupplierLogin && !order.status) || isAdminLogin"
+          >
+            {{ order.status ? "delete" : "Cancel" }}
+          </button>
+          &nbsp;
+          <button
+            class="btn-primary"
+            (click)="onDeliver(order.orderId, order)"
+            *ngIf="isSupplierLogin && !order.status"
+          >
+            Deliver
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

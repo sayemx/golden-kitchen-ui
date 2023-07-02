@@ -1,0 +1,42 @@
+.contents .form-group .label {
+  border-top: none;
+  border: none;
+  /* margin-top: 50px; */
+  /* font-size: smaller; */
+  font-weight: 100px;
+}
+.heading h3 {
+  font-size: 23px;
+  margin-bottom: 50px;
+}
+.label {
+  font-weight: 100;
+}
+.contents form .forgot-pass {
+  font-size: 14px;
+  cursor: pointer;
+}
+.login {
+  height: 75rem;
+  /* margin-top: 10rem; */
+  /* background: #eee; */
+  /* background-image: url("../../assets/login-bg.jpg"); */
+  background-color: #eee;
+  /* background-size: cover; */
+  /* background: rgba(0,0,0,.5); */
+}
+.container {
+  /* border: solid 2px gray; */
+  margin-top: 10rem auto;
+  padding: 13rem;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  background-color: white;
+}
+.input {
+  border-top: solid 1px gray;
+  border-bottom: solid 1px gray;
+  border-radius: none;
+}
+.loginButton {
+  font-size: large;
+}
